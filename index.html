@@ -15,38 +15,30 @@
             top: 0;
             left: 0;
         }
-        .online-status {
+        .status {
             font-family: 'Open Sans', sans-serif;
             display: inline-block;
             font-size: 12px;
             font-weight: bold;
+            padding: 4px 15px;
+            border-radius: 50px;
+            border: 1px solid;
+            vertical-align: middle;
+            position: relative;
+            top: -3px;
+            margin-left: 10px;
+        }
+        .online-status {
             background-color: #f0f6ed;
             color: #6aa84f;
-            padding: 4px 15px;
-            border-radius: 50px;
-            border: 1px solid #6aa84f;
-            vertical-align: middle;
-            position: relative;
-            top: -3px;
-            margin-left: 10px;
+            border-color: #6aa84f;
         }
         .offline-status {
-            font-family: 'Open Sans', sans-serif;
-            display: inline-block;
-            font-size: 12px;
-            font-weight: bold;
             background-color: #f9e9e9;
             color: #c72c2c;
-            padding: 4px 15px;
-            border-radius: 50px;
-            border: 1px solid #c72c2c;
-            vertical-align: middle;
-            position: relative;
-            top: -3px;
-            margin-left: 10px;
+            border-color: #c72c2c;
         }
         .material-icons {
-            font: 'Material Icons'
             font-size: 10px !important;
             margin-left: 0;
         }
@@ -60,9 +52,9 @@
         function updateConnectionStatus() {
             const statusElement = document.getElementById('status');
             if (navigator.onLine) {
-                statusElement.innerHTML = '<span class="online-status"><span class="material-icons" style="color: #6aa84f;">wifi</span>You are currently connected to the internet.</span>';
+                statusElement.innerHTML = '<span class="status online-status"><span class="material-icons" style="color: #6aa84f;">wifi</span> You are currently connected to the internet.</span>';
             } else {
-                statusElement.innerHTML = '<span class="offline-status"><span class="material-icons" style="color: #c72c2c;">wifi_off</span>Your connection is faulty, do not save until it is back.</span>';
+                statusElement.innerHTML = '<span class="status offline-status"><span class="material-icons" style="color: #c72c2c;">wifi_off</span> Your connection is faulty, do not save until it is back.</span>';
             }
         }
 
@@ -70,11 +62,7 @@
         window.addEventListener('online', updateConnectionStatus);
         window.addEventListener('offline', updateConnectionStatus);
 
-        setInterval(() => {
-            fetch('https://www.google.com', { mode: 'no-cors' })
-                .then(() => updateConnectionStatus())
-                .catch(() => updateConnectionStatus());
-        }, 5000);
+        setInterval(updateConnectionStatus, 5000);
     </script>
 </body>
 </html>

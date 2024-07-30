@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Real-Time Internet Connection Status</title>
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
         #status {
             font-size: 24px;
             font-weight: bold;
-            margin-top: 20px;
+            margin: 0;
+            padding: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
         .online-status {
+            font: 'Open Sans'
             display: inline-block;
             font-size: 12px;
             font-weight: bold;
@@ -23,6 +31,7 @@
             margin-left: 10px;
         }
         .offline-status {
+            font: 'Open Sans'
             display: inline-block;
             font-size: 12px;
             font-weight: bold;
@@ -41,9 +50,9 @@
             margin-left: 0;
         }
     </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <h1>Real-Time Internet Connection Status</h1>
     <div id="status">Checking connection...</div>
 
     <script>

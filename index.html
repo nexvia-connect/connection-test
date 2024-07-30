@@ -8,11 +8,37 @@
             font-weight: bold;
             margin-top: 20px;
         }
-        .online {
-            color: green;
+        .online-status {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #f0f6ed;
+            color: #6aa84f;
+            padding: 4px 15px;
+            border-radius: 50px;
+            border: 1px solid #6aa84f;
+            vertical-align: middle;
+            position: relative;
+            top: -3px;
+            margin-left: 10px;
         }
-        .offline {
-            color: red;
+        .offline-status {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #f9e9e9;
+            color: #c72c2c;
+            padding: 4px 15px;
+            border-radius: 50px;
+            border: 1px solid #c72c2c;
+            vertical-align: middle;
+            position: relative;
+            top: -3px;
+            margin-left: 10px;
+        }
+        .material-icons {
+            font-size: 12px;
+            margin-left: 0;
         }
     </style>
 </head>
@@ -24,18 +50,16 @@
         function updateConnectionStatus() {
             const statusElement = document.getElementById('status');
             if (navigator.onLine) {
-                statusElement.textContent = 'You are online';
-                statusElement.className = 'online';
+                statusElement.innerHTML = '<span class="online-status"><span class="material-icons" style="color: #6aa84f;">wifi</span>You are currently connected to the internet.</span>';
             } else {
-                statusElement.textContent = 'You are offline';
-                statusElement.className = 'offline';
+                statusElement.innerHTML = '<span class="offline-status"><span class="material-icons" style="color: #c72c2c;">wifi_off</span>Your connection is faulty, do not save until it is back.</span>';
             }
         }
 
         window.addEventListener('load', updateConnectionStatus);
         window.addEventListener('online', updateConnectionStatus);
         window.addEventListener('offline', updateConnectionStatus);
-        
+
         setInterval(() => {
             fetch('https://www.google.com', { mode: 'no-cors' })
                 .then(() => updateConnectionStatus())

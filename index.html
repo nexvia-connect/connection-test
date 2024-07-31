@@ -56,9 +56,9 @@
         function updateConnectionStatus() {
             const statusElement = document.getElementById('status');
             if (navigator.onLine) {
-                statusElement.innerHTML = '<span class="status online-status"><span class="material-icons" style="color: #6aa84f;">wifi</span>Currently connected to internet.</span>';
+                statusElement.innerHTML = '<span class="status online-status"><span class="material-icons" style="color: #6aa84f;">wifi</span>Connected to internet</span>';
             } else {
-                statusElement.innerHTML = '<span class="status offline-status"><span class="material-icons" style="color: #c72c2c;">wifi_off</span>Disconnected, do not save.</span>';
+                statusElement.innerHTML = '<span class="status offline-status"><span class="material-icons" style="color: #c72c2c;">wifi_off</span>Disconnected, do not save</span>';
             }
         }
 
